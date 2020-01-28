@@ -2,7 +2,7 @@
 #define MACROSFETCH_H
 
 #define NUM_INSTRUCTIONS 8
-#define INSTRUCTION_SIZE 17
+#define INSTRUCTION_SIZE 16
 #define ARCHIVE "instructionMen.txt"
 #define TAM_PIPE 4
 
