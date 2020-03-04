@@ -55,6 +55,7 @@ for(var i = 0; i < txt.length; i++ ) {
 
 let cont = 4;
 function mover(data, entidades, termometros) {
+
 	var nombreTermo = new Array;
 	nombreTermo.push(' ');
 	nombreTermo.push('bueno');
