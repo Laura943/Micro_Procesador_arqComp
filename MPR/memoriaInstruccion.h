@@ -49,11 +49,11 @@ SC_MODULE( MemoriaInstruccion ) {
 		
 		ifstream registros;
 		string aux = "";
-		registros.open("memoriaInstruccion.txt");
+		registros.open("memoriaInstruccion.txt"); // cambio para prueba ojo
 		int numeroInstrucciones;
 		
 		if(!registros) {
-			cout << "no se pudo abrir el archivo" << endl;
+			cout << "no se pudo abrir el archivo memoriaInstruccion.txt" << endl;
 			exit(1);
 		}
 		

@@ -5,6 +5,9 @@
 #include <systemc>
 #include "macros.h"
 
+#include <thread>        
+#include <chrono>     
+
 using namespace std;
 
 SC_MODULE( Pc ) {
@@ -23,7 +26,7 @@ SC_MODULE( Pc ) {
 	//funciones
 
 	void read() {
-
+		std::this_thread::sleep_for (std::chrono::seconds(1)); // dar tiempo a la conexion para que guarde el dato
 		if(jump.read() == 1) {
 			instructionLine += jumpDir.read();
 		}
@@ -37,7 +40,6 @@ SC_MODULE( Pc ) {
 			if(instructionLine > NUM_INSTRUCTIONS+4) { 
 				sc_stop();
 			}  
-				
 		instructionOut.write( instructionLine );
 	}
 

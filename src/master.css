@@ -1,0 +1,67 @@
+
+
+main {
+	/* border: 1px solid red; */
+	display: flex;
+	justify-content: space-around;
+	margin: 150px;
+}
+
+.mapa{
+	/* border: 1px solid red; */
+
+	display: grid;
+	height: 800px;
+	width: 800px;
+		/* grid-template-columns: 33% 33% 33%;
+		grid-template-rows: 33% 33% 33%; */
+	grid-template-columns: 264px 264px 264px;
+	grid-template-rows: 264px 264px 264px; 
+	grid-gap: 0 0;
+}
+
+.cuadricula {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0;
+	/* border: 1px solid pink; */
+	background-image: url("./images/crus.png");
+	background-repeat: repeat;
+
+}
+
+.selec {
+	background-image: url("./images/crus_selec.png");
+}
+
+.termometros div {
+	display: flex;
+	align-items: center;
+}
+
+.bueno {
+	content: url("./images/bueno.png");
+	height: 60px;
+	margin-left: 20px;
+}
+
+.neutro {
+	content: url("./images/neutro.png");
+	height: 60px;
+	margin-left: 20px;
+}
+
+.malo {
+	content: url("./images/malo.png");
+	height: 60px;
+	margin-left: 20px;
+}
+
+.termometros {
+	text-align: center;
+	font-size: 30px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}

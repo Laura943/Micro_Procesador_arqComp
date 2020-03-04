@@ -23,7 +23,7 @@ SC_MODULE( MemoriaPrincipal ) {
 	sc_int< DATA_SIZE > data;	
 
 	void read() {
-	
+		
 		if(tipoOperacion.read() == 3) {// la operacion es load
 			int aux;
 			ifstream memoria("memoriaPrincipal.txt");
@@ -82,7 +82,7 @@ void cambiarLinea(string nombreArchivo, int lineaBuscada, int remplazar) {
 	int contenido, i;
 	
 	if(!temp || !archivo) {
-		cout << "no se pudo abrir el archivo" << endl;
+		cout << "no se pudo abrir el archivo" << nombreArchivo << endl;
 		exit(1);
 	}
 
