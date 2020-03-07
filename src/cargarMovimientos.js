@@ -7,7 +7,7 @@ const plaza = document.getElementById("5");
 const cine = document.getElementById("6");
 const futbol = document.getElementById("7");
 
-let entidades = new Array();
+var entidades = new Array();
 entidades.push(casa);
 entidades.push(parque);
 entidades.push(rest1);
@@ -53,7 +53,7 @@ for(var i = 0; i < txt.length; i++ ) {
 
 
 
-let cont = 4;
+var cont = 4;
 function mover(data, entidades, termometros) {
 
 	var nombreTermo = new Array;

@@ -37,6 +37,7 @@ SC_MODULE( Pc ) {
 	}
 	
 	void write() {
+		
 			if(instructionLine > NUM_INSTRUCTIONS+4) { 
 				sc_stop();
 			}  

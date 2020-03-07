@@ -1,8 +1,11 @@
+//g++ -Wall -std=c++11 conexion.cpp -o conexion.exe -lpthread
+//ejecutar conexion.exe para calcular los movimientos en historial.txt
 #include <iostream>       
 #include <thread>        
 #include <chrono>         
 #include <cstdlib>
 #include <fstream>
+#include "macros.h"
 
 
  
@@ -12,13 +15,16 @@ static bool terminado = false;
 void moverLinea(ifstream &archivo, int linea);
 void escritor();
 void observador();
+void brain();
 
 int main() 
 {
   
   thread escribir( escritor );
   thread observar( observador );
+  thread aplicacion( brain );
   
+  aplicacion.join();
   escribir.join();
   observar.join();
   
@@ -28,16 +34,25 @@ int main()
 }
 
 void escritor() { // mpr
-
+	cout << "se prendio el mpr" << endl;
 	system("./main.exe");
 	
 	terminado = true;
 }
 
+void brain() {
+
+	cout << "se prendio el brain" << endl;
+	system ("./brain.exe");
+	if(terminado) 
+		return ;
+
+}
+
 void observador() {
 	string datos_src = "memoriaPrincipal.txt";
 	ifstream datos(datos_src);
-	ofstream hist ("historial.txt", ios::ate | ios::app); 
+	ofstream hist ("../historial.txt", ios::ate | ios::app); 
 	
 	
 	if(!hist) {
@@ -58,24 +73,37 @@ void observador() {
 	moverLinea(datos, 15);
 	datos >> ultimo;	
 	actual = ultimo;
-	cout << "*el nuevo dato en la linea 15 es: " << actual << endl;
+	cout << "*el nuevo dato en la linea 15 es: " << actual << endl; // log
 	
 	datos.close();
 	while( !terminado ) {
+		std::this_thread::sleep_for (std::chrono::seconds(27));
 		datos.open(datos_src);
+		
+		
+		
+		moverLinea(datos, 12);
+		datos >> actual;
+		hist << endl << actual ;
+		cout << "se guardo " << actual << endl;
+		moverLinea(datos, 13);
+		datos >> actual;
+		hist << endl << actual ;
+		cout << "se guardo " << actual << endl;
+		moverLinea(datos, 14);
+		datos >> actual;
+		hist << endl << actual ;
+		cout << "se guardo " << actual << endl;
 		moverLinea(datos, 15);
 		datos >> actual;
-	
-		cout << "el dato actual es: " << actual <<endl;
-	
-		if( actual != ultimo ) {
-			ultimo = actual;
-			cout << "el dato en la linea 15 es: " << actual << endl;
-			hist << endl << actual ;
-		}
+		hist << endl << actual ;
+		cout << "se guardo " << actual << endl;
 		
+
+
+		//hist  << endl << actual;
 		datos.close();
-		std::this_thread::sleep_for (std::chrono::seconds(1));
+		//std::this_thread::sleep_for (std::chrono::seconds(28));
 	//	usleep(1000000);
 	}
 
